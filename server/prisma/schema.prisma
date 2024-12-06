@@ -1,0 +1,66 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Author {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  name      String?
+  email     String   @unique
+  password  String?
+  role      Role     @default(STAFF)
+  isActive  Boolean
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+}
+
+model Student {
+  id             String     @id @default(auto()) @map("_id") @db.ObjectId
+  name           String
+  technology     Technology
+  roll           Int        @unique
+  registrationNo Int        @unique
+  session        String
+  shift          Shift      @default(FIRST)
+  active         Boolean
+  accepted       Boolean    @default(false)
+  blockReason    String?
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @default(now())
+}
+
+model FormColumn {
+  id           String       @id @default(auto()) @map("_id") @db.ObjectId
+  labelId      Int          @unique
+  serial       String
+  depertment   String
+  depertmentId Technology[]
+  sign1        String?
+  sign2        String?
+  sign3        String?
+  sign4        String?
+  sign5        String?
+  sign6        String?
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @default(now())
+}
+
+enum Role {
+  ADMIN
+  STAFF
+}
+
+enum Shift {
+  FIRST
+  SECOND
+}
+
+enum Technology {
+  CST
+  PT
+  GD
+}
