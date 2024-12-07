@@ -64,7 +64,9 @@ export const deleteSign = createAsyncThunk(
 const signetureSlice = createSlice({
   name: "signeture",
   initialState,
-  reducers: {},
+  reducers: {
+    resetSignView: () => initialState,
+  },
   extraReducers: (builder) => {
     builder
       .addCase(createSign.pending, (state) => {
@@ -102,5 +104,7 @@ const signetureSlice = createSlice({
       });
   },
 });
+
+export const { resetSignView } = signetureSlice.actions;
 
 export default signetureSlice.reducer;

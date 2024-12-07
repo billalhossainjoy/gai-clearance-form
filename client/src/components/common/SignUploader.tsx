@@ -2,6 +2,7 @@ import {
   createSign,
   deleteSign,
   fetchSign,
+  resetSignView,
 } from "@/store/sign/signeture.slice";
 import { useAppDispatch, useAppSelector } from "@/store/store";
 import { Trash } from "lucide-react";
@@ -55,6 +56,10 @@ const SignUploader: React.FC<Props> = ({ index }) => {
 
   useEffect(() => {
     if (rowId) dispatch(fetchSign(rowId));
+
+    return () => {
+      dispatch(resetSignView());
+    };
   }, [dispatch, rowId]);
 
   return (
