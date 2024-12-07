@@ -86,9 +86,10 @@ const signetureSlice = createSlice({
     builder
       .addCase(fetchSign.pending, (state) => {
         state.isLoading = true;
+        state.data = null;
       })
       .addCase(fetchSign.fulfilled, (state, action) => {
-        state.isLoading = false;
+        state.data = null;
         state.data = action.payload;
       })
       .addCase(fetchSign.rejected, (state) => {
