@@ -10,6 +10,7 @@ import { useAppDispatch } from "@/store/store";
 import { deleteSignetureRow } from "@/store/sign/signetureRow.slice";
 import { useToast } from "@/hooks/use-toast";
 import UpdateRow from "./updateRow";
+import { resetSignView } from "@/store/sign/signeture.slice";
 
 const SignetureDialog: React.FC = () => {
   const { toast } = useToast();
@@ -34,6 +35,11 @@ const SignetureDialog: React.FC = () => {
       }
     );
   };
+
+  const changeHandler = () => {
+    setSearchParams({});
+    dispatch(resetSignView())
+  }
 
   return (
     <>
@@ -64,7 +70,7 @@ const SignetureDialog: React.FC = () => {
       </Dialog>
       <Dialog
         open={searchParams.get("update") ? true : false}
-        onOpenChange={() => setSearchParams({})}
+        onOpenChange={() => changeHandler() }
       >
         <DialogContent className="w-full max-w-[800px]">
           <DialogTitle className="text-destructive">Update</DialogTitle>

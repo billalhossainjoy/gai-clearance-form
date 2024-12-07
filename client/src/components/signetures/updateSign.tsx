@@ -1,6 +1,6 @@
 import { useAppSelector } from "@/store/store";
 import Div from "../common/customDiv";
-import SignUploader from "../common/SignUploader";
+import SignUploader from "./SignUploader";
 import { Loader } from "lucide-react";
 
 const UpdateSignetures: React.FC = () => {
