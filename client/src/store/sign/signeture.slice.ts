@@ -65,7 +65,10 @@ const signetureSlice = createSlice({
   name: "signeture",
   initialState,
   reducers: {
-    resetSignView: () => initialState,
+    resetSignView: (state) => {
+      state.isLoading = false;
+      state.data = null;
+    },
   },
   extraReducers: (builder) => {
     builder
