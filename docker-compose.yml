@@ -1,0 +1,58 @@
+version: "3.8"
+
+services:
+  client:
+    build:
+      context: ../../MERN/Multi_Vendor_E-Commerce/client
+      dockerfile: ../../MERN/Multi_Vendor_E-Commerce/client/Dockerfile
+      target: dev
+    ports:
+      - "5173:5173"
+    depends_on:
+      - server
+    env_file:
+      - /client/.env
+    volumes:
+      - ./client:/usr/src/app
+      - /usr/src/app/node_modules
+
+  server:
+    build:
+      context: ../../MERN/Multi_Vendor_E-Commerce/server
+      dockerfile: ../../MERN/Multi_Vendor_E-Commerce/server/Dockerfile
+      target: dev
+    ports:
+      - "5000:5000"
+    env_file:
+      - ../../MERN/Multi_Vendor_E-Commerce/server/.env
+    volumes:
+      - ./server:/usr/src/app
+      - /usr/src/app/node_modules
+    environment:
+      CHOKIDAR_USEPOLLING: "true"
+    depends_on:
+      - mongodb
+    command: ["npm", "run", "dev"]
+
+  mongodb:
+    image: mongo:7.0
+    command: ["--replSet", "rs0", "--bind_ip_all", "--port", "27017"]
+    ports:
+      - "27017:27017"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    healthcheck:
+      test: echo "try { rs.status() } catch (err) { rs.initiate({_id:'rs0',members:[{_id:0,host:'host.docker.internal:27017'}]}) }" | mongosh --port 27017 --quiet
+      interval: 5s
+      timeout: 30s
+      start_period: 0s
+      start_interval: 1s
+      retries: 30
+    volumes:
+      - "mongo1_data:/data/db"
+      - "mongo1_config:/data/configdb"
+
+
+volumes:
+  mongo1_data:
+  mongo1_config:
