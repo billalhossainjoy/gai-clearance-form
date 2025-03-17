@@ -10,9 +10,11 @@ async function bootstrap() {
     cors({
       origin: [
         'https://gai-clearance-form.vercel.app',
+        'https://www.gai.gov.bd',
         'http://localhost:5173',
         'https://gai.gov.bd',
         'https://dev.gai.gov.bd',
+        'https://gai.gov.bd'
       ],
       credentials: true,
     }),
