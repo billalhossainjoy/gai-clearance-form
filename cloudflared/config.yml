@@ -1,0 +1,15 @@
+tunnel: 962723bf-b4f3-4c38-b791-a61cf0dd7b77
+credentials-file: /etc/cloudflared/962723bf-b4f3-4c38-b791-a61cf0dd7b77.json
+
+ingress:
+  - hostname: gai.gov.bd
+    service: http://client:80
+  - hostname: api.gai.gov.bd
+    service: http://nginx-server:80
+
+  - hostname: dev.gai.gov.bd
+    service: http://localhost:5713
+  - hostname: dev.api.gai.gov.bd
+    service: http://localhost:5000
+
+  - service: http_status:404

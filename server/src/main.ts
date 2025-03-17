@@ -11,10 +11,12 @@ async function bootstrap() {
       origin: [
         'https://gai-clearance-form.vercel.app',
         'http://localhost:5173',
+        'https://gai.gov.bd',
+        'https://dev.gai.gov.bd',
       ],
       credentials: true,
     }),
   );
-  await app.listen(process.env.PORT ?? 3000);
+  await app.listen(process.env.PORT ?? 5000);
 }
 bootstrap();
