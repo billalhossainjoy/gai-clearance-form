@@ -14,7 +14,6 @@ async function bootstrap() {
         'http://localhost:5173',
         'https://gai.gov.bd',
         'https://dev.gai.gov.bd',
-        'https://gai.gov.bd'
       ],
       credentials: true,
     }),
