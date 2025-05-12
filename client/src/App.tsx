@@ -15,6 +15,7 @@ import Protected from "./components/auth/protected";
 import BlockLists from "./pages/Dashboard/blockedList";
 import ApplicantsPage from "./pages/Dashboard/applicants";
 import SigneturesPage from "./pages/Dashboard/signetures";
+import MainLayout from "@/layout/mainLayout.tsx";
 
 const App: React.FC = () => {
   const { isLoading, authData, isAuthenticated } = useAppSelector(
@@ -41,7 +42,8 @@ const App: React.FC = () => {
   return (
     <div>
       <Routes>
-        <Route index element={<ClientLayout />} />
+          <Route index element={<ClientLayout />} />
+          <Route path={"/home"} element={<MainLayout />} />
         <Route
           path="auth"
           element={

@@ -15,12 +15,12 @@ export const depertmentOptions = [
 
 export const sessionOptions = [
   {
-    id: "2018-2029",
-    label: "2018-2029",
+    id: "2018-2019",
+    label: "2018-2019",
   },
   {
-    id: "2029-2020",
-    label: "2029-2020",
+    id: "2019-2020",
+    label: "2019-2020",
   },
   {
     id: "2020-2021",

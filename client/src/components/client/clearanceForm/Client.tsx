@@ -20,11 +20,11 @@ const Client: React.FC = () => {
       <TabsList className="w-full h-full">
         <TabsTrigger
           value="clearanceForm"
-          className="w-full text-2xl md:text-lg"
+          className="w-full text-sm md:text-lg"
         >
           Clearance Form
         </TabsTrigger>
-        <TabsTrigger value="application" className="w-full text-2xl md:text-lg">
+        <TabsTrigger value="application" className="w-full text-sm md:text-lg">
           Application
         </TabsTrigger>
       </TabsList>
